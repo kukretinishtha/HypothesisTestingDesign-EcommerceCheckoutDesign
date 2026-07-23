@@ -1,0 +1,2 @@
+n_simulations,alpha,observed_false_positive_rate,expected_false_positive_rate,verdict
+1000,0.05,0.061,0.05,"PASS - false positive rate matches alpha, test setup is valid"

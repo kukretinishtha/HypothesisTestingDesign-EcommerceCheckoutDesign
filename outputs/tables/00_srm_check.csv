@@ -1,0 +1,2 @@
+n_control,n_treatment,observed_ratio_treatment,expected_ratio_treatment,chi2_statistic,p_value,alpha,srm_detected,verdict
+49488,49953,0.5023380698102392,0.5,1.0778761872348641,0.29917315365569297,0.001,False,PASS - no SRM detected

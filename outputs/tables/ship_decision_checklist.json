@@ -1,0 +1,8 @@
+{
+  "Conversion lift is statistically significant": true,
+  "Conversion lift is practically meaningful (>= 1pp absolute)": false,
+  "AOV is not significantly worse": true,
+  "No guardrail metric breached": true,
+  "Experiment adequately powered (sample >= required)": true,
+  "No Sample Ratio Mismatch detected": true
+}

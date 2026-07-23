@@ -1,0 +1,2 @@
+metric_name,n_control,n_treatment,mean_control,mean_treatment,std_control,std_treatment,absolute_diff,relative_diff_pct,t_statistic,p_value,cohens_d,ci_low_diff,ci_high_diff,significant
+payment_value,49488,49953,161.21541323149046,160.76399315356434,214.80912636916153,228.808083325347,-0.45142007792611594,-0.28001049581898124,0.3207734248379798,0.7483827759389465,-0.0020338660120498,-3.209650735844056,2.306810579991824,False

@@ -1,0 +1,113 @@
+20:27:33 | INFO     | pipeline                     | ======================================================================
+20:27:33 | INFO     | pipeline                     | STARTING OLIST CHECKOUT A/B TESTING PIPELINE
+20:27:33 | INFO     | pipeline                     | ======================================================================
+20:27:33 | INFO     | src.data_loader              | Real Olist CSVs detected in data/raw/ -- loading actual dataset.
+20:27:34 | INFO     | src.data_loader              | Built analysis table: 99,441 rows, 99,441 unique orders (source=real); 768 orders missing a review score, 2,164 missing a product category
+20:27:34 | INFO     | src.experiment_design        | SRM check: control=49,488 treatment=49,953 p=0.2992 -> PASS - no SRM detected
+20:27:35 | INFO     | src.experiment_design        | A/A test on 'payment_value': observed FPR=0.061 (expected ~0.05) -> PASS - false positive rate matches alpha, test setup is valid
+20:27:35 | INFO     | pipeline                     | Saved table: 00_srm_check.csv
+20:27:35 | INFO     | pipeline                     | Saved table: 00_aa_test.csv
+20:27:35 | INFO     | src.experiment_design        | Injected ground-truth effect: flipped 92 treatment orders to converted (target lift=6.0%)
+20:27:35 | INFO     | src.stats_tests              | Conversion test: control=0.9699 treatment=0.9724 abs_lift=+0.0025 p=0.01753 significant=True
+20:27:35 | INFO     | pipeline                     | Saved table: 01_conversion_test.csv
+20:27:35 | INFO     | src.stats_tests              | Continuous test [payment_value]: control=161.22 treatment=160.76 diff=-0.45 p=0.74838 significant=False
+20:27:35 | INFO     | pipeline                     | Saved table: 02_aov_test.csv
+20:27:36 | INFO     | src.stats_tests              | Continuous test [delivery_days]: control=12.52 treatment=12.60 diff=+0.08 p=0.17750 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9203 treatment=0.9175 abs_lift=-0.0028 p=0.11298 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.0063 treatment=0.0058 abs_lift=-0.0004 p=0.39451 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.0063 treatment=0.0056 abs_lift=-0.0007 p=0.19034 significant=False
+20:27:36 | INFO     | src.stats_tests              | Continuous test [review_score]: control=4.09 treatment=4.08 diff=-0.01 p=0.46413 significant=False
+20:27:36 | INFO     | src.guardrails               | Guardrail [Delivery Time (days)]: control=12.517 treatment=12.599 diff=+0.083 p=0.1775 -> OK
+20:27:36 | INFO     | src.guardrails               | Guardrail [On-Time Delivery Rate]: control=0.920 treatment=0.917 diff=-0.003 p=0.1130 -> OK
+20:27:36 | INFO     | src.guardrails               | Guardrail [Cancellation Rate]: control=0.006 treatment=0.006 diff=-0.000 p=0.3945 -> OK
+20:27:36 | INFO     | src.guardrails               | Guardrail [Payment Failure Rate]: control=0.006 treatment=0.006 diff=-0.001 p=0.1903 -> OK
+20:27:36 | INFO     | src.guardrails               | Guardrail [Review Score (stars)]: control=4.090 treatment=4.084 diff=-0.006 p=0.4641 -> OK
+20:27:36 | INFO     | pipeline                     | Saved table: 03_guardrails.csv
+20:27:36 | INFO     | src.stats_tests              | Power analysis: need n=1,542/arm to detect 2.0% abs lift on 97.0% baseline (alpha=0.05, power=0.8)
+20:27:36 | INFO     | pipeline                     | Saved table: 04_power_analysis.csv
+20:27:36 | INFO     | src.stats_tests              | CUPED adjustment on 'payment_value' using covariate 'n_items': theta=73.3833, variance reduced from 49261.6302 to 47658.2213 (3.3% reduction)
+20:27:36 | INFO     | pipeline                     | Saved table: 05_cuped_variance_reduction.csv
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9460 treatment=0.9554 abs_lift=+0.0094 p=0.17791 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9709 treatment=0.9732 abs_lift=+0.0022 p=0.04068 significant=True
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9705 treatment=0.9718 abs_lift=+0.0013 p=0.42905 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9598 treatment=0.9651 abs_lift=+0.0054 p=0.12038 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9757 treatment=0.9768 abs_lift=+0.0011 p=0.74049 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9768 treatment=0.9800 abs_lift=+0.0032 p=0.46591 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9726 treatment=0.9793 abs_lift=+0.0067 p=0.14112 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9740 treatment=0.9786 abs_lift=+0.0046 p=0.28282 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9695 treatment=0.9826 abs_lift=+0.0131 p=0.02135 significant=True
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9793 treatment=0.9790 abs_lift=-0.0003 p=1.00000 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9890 treatment=0.9865 abs_lift=-0.0025 p=0.80046 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9802 treatment=0.9788 abs_lift=-0.0014 p=0.93024 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9768 treatment=0.9797 abs_lift=+0.0029 p=0.47138 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9857 treatment=0.9843 abs_lift=-0.0015 p=1.00000 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9800 treatment=0.9822 abs_lift=+0.0022 p=0.72054 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9765 treatment=0.9773 abs_lift=+0.0008 p=0.88869 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9846 treatment=0.9849 abs_lift=+0.0003 p=0.98416 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9830 treatment=0.9756 abs_lift=-0.0074 p=0.13444 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9813 treatment=0.9863 abs_lift=+0.0050 p=0.80733 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9750 treatment=0.9757 abs_lift=+0.0007 p=0.96628 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9775 treatment=0.9814 abs_lift=+0.0039 p=0.22355 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9851 treatment=0.9897 abs_lift=+0.0046 p=0.39082 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9724 treatment=0.9754 abs_lift=+0.0030 p=0.70473 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9803 treatment=0.9792 abs_lift=-0.0012 p=0.89568 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9762 treatment=0.9799 abs_lift=+0.0037 p=0.39001 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9821 treatment=0.9714 abs_lift=-0.0107 p=0.88977 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9733 treatment=0.9791 abs_lift=+0.0058 p=0.10925 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9773 treatment=0.9592 abs_lift=-0.0181 p=0.36049 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9677 treatment=0.9685 abs_lift=+0.0007 p=1.00000 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9737 treatment=0.9861 abs_lift=+0.0124 p=0.55397 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9846 treatment=0.9643 abs_lift=-0.0203 p=0.89592 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=1.0000 treatment=0.9610 abs_lift=-0.0390 p=0.40668 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9812 treatment=0.9738 abs_lift=-0.0074 p=0.35763 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9684 treatment=0.9773 abs_lift=+0.0090 p=0.65631 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9884 treatment=0.9822 abs_lift=-0.0062 p=0.57397 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9920 treatment=0.9907 abs_lift=-0.0013 p=1.00000 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9920 treatment=0.9776 abs_lift=-0.0144 p=0.66420 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9890 treatment=0.9701 abs_lift=-0.0188 p=0.11897 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9847 treatment=0.9720 abs_lift=-0.0127 p=0.76066 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9870 treatment=0.9619 abs_lift=-0.0251 p=0.57217 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9286 treatment=1.0000 abs_lift=+0.0714 p=0.76583 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9948 treatment=0.9781 abs_lift=-0.0166 p=0.33970 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9915 treatment=0.9826 abs_lift=-0.0088 p=0.98801 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9606 treatment=0.9619 abs_lift=+0.0013 p=1.00000 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9778 treatment=0.9184 abs_lift=-0.0594 p=0.41098 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9405 treatment=0.9615 abs_lift=+0.0211 p=0.79845 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9744 treatment=0.9800 abs_lift=+0.0056 p=1.00000 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9489 treatment=0.9809 abs_lift=+0.0320 p=0.23528 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9774 treatment=0.9646 abs_lift=-0.0128 p=0.82669 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9908 treatment=0.9690 abs_lift=-0.0218 p=0.47362 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9957 treatment=0.9791 abs_lift=-0.0166 p=0.22759 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9888 treatment=1.0000 abs_lift=+0.0112 p=0.50902 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9590 treatment=0.9820 abs_lift=+0.0230 p=0.52124 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9322 treatment=0.9623 abs_lift=+0.0301 p=0.77552 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9722 treatment=0.9655 abs_lift=-0.0067 p=1.00000 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9695 treatment=0.9955 abs_lift=+0.0259 p=0.09405 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9560 treatment=0.9720 abs_lift=+0.0159 p=0.82712 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=1.0000 treatment=0.9608 abs_lift=-0.0392 p=0.17732 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9712 treatment=0.9917 abs_lift=+0.0205 p=0.51548 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9540 treatment=1.0000 abs_lift=+0.0460 p=0.11291 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9459 treatment=0.9737 abs_lift=+0.0277 p=0.98119 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9688 treatment=0.9259 abs_lift=-0.0428 p=0.87981 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=1.0000 treatment=0.9000 abs_lift=-0.1000 p=0.49085 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=1.0000 treatment=0.9583 abs_lift=-0.0417 p=1.00000 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9688 treatment=1.0000 abs_lift=+0.0312 p=0.40237 significant=False
+20:27:36 | INFO     | src.stats_tests              | Conversion test: control=0.9565 treatment=0.9333 abs_lift=-0.0232 p=1.00000 significant=False
+20:27:36 | INFO     | src.stats_tests              | Continuous test [review_score]: control=4.39 treatment=4.37 diff=-0.02 p=0.02523 significant=True
+20:27:36 | INFO     | src.stats_tests              | Continuous test [review_score]: control=3.93 treatment=3.93 diff=+0.00 p=0.83393 significant=False
+20:27:36 | INFO     | src.segment_analysis         | Segment analysis complete: 68 segment cells evaluated
+20:27:36 | INFO     | pipeline                     | Saved table: 06_segment_analysis.csv
+20:27:36 | INFO     | pipeline                     | Saved table: 07_ship_decision_checklist.csv
+20:27:36 | INFO     | src.visualization            | Saved figure: 00_setup_validation.png
+20:27:36 | INFO     | src.visualization            | Saved figure: 01_conversion_comparison.png
+20:27:37 | INFO     | src.visualization            | Saved figure: 02_aov_distribution.png
+20:27:37 | INFO     | src.visualization            | Saved figure: 03_guardrails.png
+20:27:37 | INFO     | src.visualization            | Saved figure: 04_power_curve.png
+20:27:37 | INFO     | src.visualization            | Saved figure: 05_effect_size_forest.png
+20:27:38 | INFO     | src.visualization            | Saved figure: 06_segment_lift.png
+20:27:38 | INFO     | src.visualization            | Saved figure: 07_cuped_variance_reduction.png
+20:27:38 | INFO     | src.visualization            | Saved figure: 08_ship_decision.png
+20:27:39 | INFO     | pipeline                     | Saved full analysis table: full_analysis_table.csv (99,441 rows)
+20:27:39 | INFO     | pipeline                     | ======================================================================
+20:27:39 | INFO     | pipeline                     | PIPELINE COMPLETE. Report: /Users/nishtha/Documents/olist_ab_testing/outputs/report.md
+20:27:39 | INFO     | pipeline                     | ======================================================================

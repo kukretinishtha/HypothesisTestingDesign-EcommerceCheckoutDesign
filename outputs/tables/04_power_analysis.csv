@@ -1,0 +1,2 @@
+baseline_rate,mde_absolute,target_rate,effect_size,alpha,target_power,required_n_per_arm,required_n_total
+0.9698512770772713,0.02,0.9898512770772713,0.10090526617088923,0.05,0.8,1542,3084
